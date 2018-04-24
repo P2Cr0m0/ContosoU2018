@@ -21,5 +21,6 @@ namespace ContosoU2018
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
                 .Build();
+        //ok
     }
 }
