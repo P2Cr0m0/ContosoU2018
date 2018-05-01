@@ -31,9 +31,25 @@ namespace ContosoU2018.Controllers
             if (id == null)
             {
                 return NotFound();
+
+                /*
+                 * 
+                 * Status Codes
+                 * Success:
+                 * return Ok() -  HTTP status code 200
+                 * return Created() - HTPP status 201
+                 * return NoContent() - HTTP status 204
+                 * 
+                 * Client Error:
+                 * return BadRequest() - HTTP Status 400
+                 * return Unauthorized() - HTTP Status 401
+                 * return NotFound() - HTTP Status 404
+                 * 
+                 */
             }
 
             var student = await _context.Students
+                .Include
                 .SingleOrDefaultAsync(m => m.ID == id);
             if (student == null)
             {
@@ -66,7 +82,6 @@ namespace ContosoU2018.Controllers
         }
 
         // GET: Student/Edit/5
-        
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
